@@ -32,7 +32,7 @@ class CreateBlogTables extends Migration {
 		    $table->string('topic_name', 64);
 		    $table->string('topic_content', 128);
 		    $table->integer('author_id')->unsigned();
-		    $table->foreign('author_id')->references('id')->on('authors');
+		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
 		});
 
@@ -42,7 +42,7 @@ class CreateBlogTables extends Migration {
 		    $table->increments('id');
 		    $table->string('content', 128);
 		    $table->integer('author_id')->unsigned();
-		    $table->foreign('author_id')->references('id')->on('authors');
+		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
 		});	
 		
@@ -52,7 +52,7 @@ class CreateBlogTables extends Migration {
 		    $table->increments('id');
 		    $table->string('content', 128);
 		    $table->integer('author_id')->unsigned();
-		    $table->foreign('author_id')->references('id')->on('authors');
+		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
 		});
 		

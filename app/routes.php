@@ -85,13 +85,15 @@ Route::get('/debug', function() {
 //***********************************************************
 Route::get('/topics', function()
 {
-  
-        $topics= DB::table('topics')->get();
-           foreach ($topics as $topic) {
-              echo "Topic: " . $topic->topic_name . "<br>";
-              echo "Description: " . $topic->topic_content . "<br>";
-              echo "<br>";
-              echo "<br>";
+    $topics = DB::table('topics')->get();
+    foreach ($topics as $topic) {
+    //var_dump($topic);
+        echo "Topic: " . $topic->topic_name . "<br>";
+        echo "Description: " . $topic->topic_content . "<br>";
+        $user = DB::table('users')->where('id', $topic->author_id)->first();
+        echo "User name: " . $user->user_name . "<br>";
+        echo "<br>";
+        echo "<br>";
     }
       return View::make('/topics');
 });
@@ -117,11 +119,13 @@ Route::post('/createTopic',
             $topic['topic_content'] = $data['topicDescription'];
             $topic->author()->associate(Auth::user()); # <--- Associate the author with this Topic
             $topic->save();   
+            return Redirect::to('/topics');
         }
     )
 );
-
-///////////LOGIN AND AUTHENTICATION ROUTES HERE///////////////////////
+//***********************************************************
+//        LOGIN AND AUTHENTICATION ROUTES HERE
+//***********************************************************
 Route::get('/signup',
     array(
         'before' => 'guest',

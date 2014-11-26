@@ -14,6 +14,7 @@
     <br>
     {{Form::text('topicTitle')}}
     <br>
+    <br>
     {{Form::label('topicDescription', ' Enter a topic description. ')}}
     <br>
     {{Form::textarea('topicDescription')}}

@@ -1,0 +1,27 @@
+/*CSS rules for p3*/
+/*This CSS validates on W3C as CSS level 3 */
+
+body {
+	font-family: Veranda, Arial, sans-serif;
+	font-size: small;
+	background-color: #F0F0F0;
+}
+
+
+.center{
+	width: auto;
+	height:  auto;
+	border-style: solid;
+     	border-width: 1px;
+	border-color: black;
+	padding: 20px;
+	margin-right:  20%;
+	margin-left: 20%;
+	background-color: #D0D0D0;
+}
+
+.form {
+	font-size: 120%;
+	font-weight: bold;
+}
+

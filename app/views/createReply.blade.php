@@ -26,7 +26,7 @@
 
 @section('form')
 <?php  
-    echo "Laravel sucks " . $topicNumber;
+    echo "Topic Number:  " . $topicNumber;
     echo Form::open(array('url' => "createReply", 'method'=>'POST'));
     echo Form::textarea('replyContent');
     echo "<br>";

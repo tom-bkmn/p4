@@ -41,6 +41,7 @@ class CreateBlogTables extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('content', 128);
+		    $table->string('topic_id',10);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
@@ -51,28 +52,29 @@ class CreateBlogTables extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('content', 128);
+		    $table->string('reply_id', 10);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
 		});
 		
-		// Pivot table.  Associate topic and replies
-		Schema::create('reply_topic', function($table)
-		{
-		    $table->integer('topic_id')->unsigned();
-		    $table->foreign('topic_id')->references('id')->on('topics');
-		    $table->integer('reply_id')->unsigned();
-		    $table->foreign('reply_id')->references('id')->on('replies');
-		});
+		// Pivot tables suck.  Don't use them. Associate topic and replies
+		//Schema::create('reply_topic', function($table)
+		//{
+		//    $table->integer('topic_id')->unsigned();
+		//    $table->foreign('topic_id')->references('id')->on('topics');
+		//    $table->integer('reply_id')->unsigned();
+		//    $table->foreign('reply_id')->references('id')->on('replies');
+		//});
 
-		// Pivot table.  Associate replies and comments		
-		Schema::create('comment_reply', function($table)
-		{
-		    $table->integer('reply_id')->unsigned();
-		    $table->foreign('reply_id')->references('id')->on('replies');
-		    $table->integer('comment_id')->unsigned();
-		    $table->foreign('comment_id')->references('id')->on('comments');
-		});        
+		// Pivot table.  This one sucks too.  Don't use it. Associate replies and comments		
+		//Schema::create('comment_reply', function($table)
+		//{
+		//    $table->integer('reply_id')->unsigned();
+		//    $table->foreign('reply_id')->references('id')->on('replies');
+		//    $table->integer('comment_id')->unsigned();
+		//    $table->foreign('comment_id')->references('id')->on('comments');
+		//});        
 	}
 
 	/**
@@ -82,8 +84,8 @@ class CreateBlogTables extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('reply_topic');
-		Schema::drop('comment_reply');
+		//Schema::drop('reply_topic');
+		//Schema::drop('comment_reply');
 		Schema::drop('topics');
 		Schema::drop('replies');
 		Schema::drop('comments');

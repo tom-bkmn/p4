@@ -14,14 +14,14 @@ class RepliesController extends BaseController {
 
     # Create a reply.
     public function postReply($topicNumber) {
-       return View::make('/createReply')
+        return View::make('/createReply')
       	->with('topicNumber', $topicNumber);  
     }
 
-    # This is an action...
-    public function getLogin() {
-
-
+    # Create a comment in the replies form.
+    public function getCommentForm($replyNumber) {
+       return View::make('/createComment')
+     	->with('replyNumber', $replyNumber);  
     }
 
     # This is an action...

@@ -118,19 +118,41 @@ Route::post('/createReply',
     //    'before' => 'csrf', 
         function() {
             $data = Input::all();
-            $topic = new Topic;
-            $topic = DB::table('topics')->where('id', $data['topicNum']) ->first();
+           // $topic = new Topic;
+           // $topic = DB::table('topics')->where('id', $data['topicNum']) ->first();
            // var_dump($data);
            echo "Hey this is the info: " . $data['topicNum'];
             $reply = new Reply;
             $reply['content'] = $data['replyContent'];
+            $reply['topic_id'] = $data['topicNum'];
             $reply->author()->associate(Auth::user()); # <--- Associate the author with this Topic
             $reply->save();   
-            $reply->topics()->attach($topic->id);
+            //$reply->topics()->attach($topic->id);
             return Redirect::to('/replies/'.$data['topicNum']);
         }
     )
 );
+
+Route::get('/createComment/{replyNumber}', 'RepliesController@getCommentForm');
+
+Route::post('/createComment', 
+    array(
+    //    'before' => 'csrf', 
+        function() {
+            $data = Input::all();
+           // var_dump($data);
+           //echo "Hey this is the info: " . $data['topicNum'];
+            $comment = new Comment;
+            $comment['content'] = $data['commentContent'];
+            $comment['reply_id'] = $data['replyNum'];
+            $comment->author()->associate(Auth::user()); # <--- Associate the author with this Comment
+            $comment->save();   
+            //$reply->topics()->attach($topic->id);
+            return Redirect::to('/replies/'.$data['topicNum']);
+        }
+    )
+);
+
 
 //***********************************************************
 //        LOGIN AND AUTHENTICATION ROUTES HERE

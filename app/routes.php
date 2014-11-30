@@ -83,20 +83,7 @@ Route::get('/debug', function() {
 //***********************************************************
 //     Application Routes Here
 //***********************************************************
-Route::get('/topics', function()
-{
-    $topics = DB::table('topics')->get();
-    foreach ($topics as $topic) {
-    //var_dump($topic);
-        echo "Topic: " . $topic->topic_name . "<br>";
-        echo "Description: " . $topic->topic_content . "<br>";
-        $user = DB::table('users')->where('id', $topic->author_id)->first();
-        echo "User name: " . $user->user_name . "<br>";
-        echo "<br>";
-        echo "<br>";
-    }
-      return View::make('/topics');
-});
+Route::get('/topics', 'TopicsController@getTopics');
 
 Route::get('/createTopic', function()
 {
@@ -123,6 +110,28 @@ Route::post('/createTopic',
         }
     )
 );
+
+Route::get('/replies/{topicNumber}', 'RepliesController@getReplies');
+Route::get('/createReply/{topicNumber}', 'RepliesController@postReply');
+Route::post('/createReply', 
+    array(
+    //    'before' => 'csrf', 
+        function() {
+            $data = Input::all();
+            $topic = new Topic;
+            $topic = DB::table('topics')->where('id', $data['topicNum']) ->first();
+           // var_dump($data);
+           echo "Hey this is the info: " . $data['topicNum'];
+            $reply = new Reply;
+            $reply['content'] = $data['replyContent'];
+            $reply->author()->associate(Auth::user()); # <--- Associate the author with this Topic
+            $reply->save();   
+            $reply->topics()->attach($topic->id);
+            return Redirect::to('/replies/'.$data['topicNum']);
+        }
+    )
+);
+
 //***********************************************************
 //        LOGIN AND AUTHENTICATION ROUTES HERE
 //***********************************************************

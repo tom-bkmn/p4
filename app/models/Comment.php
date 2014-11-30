@@ -5,7 +5,7 @@ class Comment extends Eloquent {
     public function author() {
         # Comment belongs to Author
         # Define an inverse one-to-many relationship.
-        return $this->belongsTo('Author');
+        return $this->belongsTo('User');
     }
 
     public function replies() {

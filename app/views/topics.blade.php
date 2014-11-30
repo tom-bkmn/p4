@@ -1,16 +1,31 @@
 @extends('_master')
 
 @section('title')
-    TBen's Blog/Forum Deluxe
+    TBen's Blog
 @stop
 
 @section('landingPageIntro')
-This is the description of the application
+Welcome to TBen's Forums, a place for discussion.  See a topic you like? Select the link for that topic and add your .02.  Don't see a topic that catches your interest? Select Create a Topic and begin.
 @stop
 
-@section('bodyContent_1')
-This is where the links for the topics would be located...
+@section('bodyContent')
+Here are a list of current topics for discussion...
 <br>
+<br>
+<?php 
+    foreach ($topics as $topic) {
+       //var_dump($topic);  
+       echo "<a href=\"/replies/$topic->id\">Topic: $topic->topic_name</a>";
+       echo "<br>";
+       echo "Description: " . $topic->topic_content . "<br>";
+       $user = DB::table('users')->where('id', $topic->author_id)->first();
+       echo "Author name: " . $user->user_name . "<br>";
+       echo "Created on: " . $topic->created_at . "<br>";
+       echo "<br>";
+       echo "<br>";
+    }
+?>
+
 @stop
 
 

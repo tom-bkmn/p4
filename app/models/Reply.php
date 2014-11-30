@@ -5,7 +5,7 @@ class Reply extends Eloquent {
     public function author() {
         # Reply belongs to Author
         # Define an inverse one-to-many relationship.
-        return $this->belongsTo('Author');
+        return $this->belongsTo('User');
     }
 
     public function topics() {
@@ -15,7 +15,7 @@ class Reply extends Eloquent {
 
     public function comments() {
         # Replies belong to many Comments
-        return $this->belongsToMany('Comment');
+       return $this->belongsToMany('Comment');
     }
 
 }			

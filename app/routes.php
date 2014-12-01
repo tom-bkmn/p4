@@ -4,17 +4,8 @@
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 
 /* Environment Support and Debug */
 Route::get('/get-environment',function() {
@@ -81,78 +72,21 @@ Route::get('/debug', function() {
 
 });
 //***********************************************************
-//     Application Routes Here
+//                APPLICATION ROUTES
 //***********************************************************
+// TOPICS
 Route::get('/topics', 'TopicsController@getTopics');
+Route::get('/createTopic', 'TopicsController@createTopic');
+Route::post('/createTopic', 'TopicsController@postTopic');
 
-Route::get('/createTopic', function()
-{
-    return View::make('/createTopic');
-    
-});
-
-Route::post('/createTopic', 
-    array(
-    //    'before' => 'csrf', 
-        function() {
-	    $data = Input::all();
-           // var_dump($data);
-
-            echo "Here is the author id:  ".Auth::user()->id;
-            echo "Here is the Title ".$data['topicTitle'];
-            
-            $topic = new Topic;
-            $topic['topic_name'] = $data['topicTitle'];
-            $topic['topic_content'] = $data['topicDescription'];
-            $topic->author()->associate(Auth::user()); # <--- Associate the author with this Topic
-            $topic->save();   
-            return Redirect::to('/topics');
-        }
-    )
-);
-
+// REPLIES
 Route::get('/replies/{topicNumber}', 'RepliesController@getReplies');
-Route::get('/createReply/{topicNumber}', 'RepliesController@postReply');
-Route::post('/createReply', 
-    array(
-    //    'before' => 'csrf', 
-        function() {
-            $data = Input::all();
-           // $topic = new Topic;
-           // $topic = DB::table('topics')->where('id', $data['topicNum']) ->first();
-           // var_dump($data);
-           echo "Hey this is the info: " . $data['topicNum'];
-            $reply = new Reply;
-            $reply['content'] = $data['replyContent'];
-            $reply['topic_id'] = $data['topicNum'];
-            $reply->author()->associate(Auth::user()); # <--- Associate the author with this Topic
-            $reply->save();   
-            //$reply->topics()->attach($topic->id);
-            return Redirect::to('/replies/'.$data['topicNum']);
-        }
-    )
-);
+Route::get('/createReply/{topicNumber}', 'RepliesController@createReply');
+Route::post('/createReply', 'RepliesController@postReply');
 
+// COMMETNTS
 Route::get('/createComment/{replyNumber}', 'RepliesController@getCommentForm');
-
-Route::post('/createComment', 
-    array(
-    //    'before' => 'csrf', 
-        function() {
-            $data = Input::all();
-           // var_dump($data);
-           //echo "Hey this is the info: " . $data['topicNum'];
-            $comment = new Comment;
-            $comment['content'] = $data['commentContent'];
-            $comment['reply_id'] = $data['replyNum'];
-            $comment->author()->associate(Auth::user()); # <--- Associate the author with this Comment
-            $comment->save();   
-            //$reply->topics()->attach($topic->id);
-            return Redirect::to('/replies/'.$data['topicNum']);
-        }
-    )
-);
-
+Route::post('/createComment', 'RepliesController@postComment');
 
 //***********************************************************
 //        LOGIN AND AUTHENTICATION ROUTES HERE
@@ -211,7 +145,7 @@ Route::post('/login',
             $credentials = Input::only('email', 'password');
 
             if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/debug')->with('flash_message', 'Welcome Back!');
+                return Redirect::intended('/topics')->with('flash_message', 'Welcome Back!');
             }
             else {
                 return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
@@ -239,7 +173,7 @@ Route::get('/list/{format?}',
     array(
         'before' => 'auth', 
         function($format = 'html') {
-            echo "I think this is the right answer.";
+            return Redirect::to('/topics');
         }
     )
 );

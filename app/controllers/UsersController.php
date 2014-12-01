@@ -1,17 +1,18 @@
 <?php
 
-class TopicsController extends BaseController {
+class UsersController extends BaseController {
 
 
     public function __construct() {
         # Put anything here that should happen before any of the other actions
     }
 
-    # Retrieve and present a list of topics
-    public function getTopics() {
-        $topics = DB::table('topics')->get();
-        return View::make('/topics')
-        	   ->with('topics', $topics);
+    # Retrieve the signup panel
+    public function signup() {
+        'before' => 'guest',
+        function() {
+             return View::make('signup');
+        }
     }
 
     # Retrieve the view to create a topic

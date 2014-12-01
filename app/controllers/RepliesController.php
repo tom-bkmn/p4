@@ -6,28 +6,54 @@ class RepliesController extends BaseController {
         # Put anything here that should happen before any of the other actions
     }
 
-    # Retrieve and present a list of topics
+    ########################################
+    #
+    #    These are the methods for Replies
+    #
+    ########################################
+    # Retrieve and present a list of Replies
     public function getReplies($topicNumber) {
         return View::make('/replies')
         	   ->with('topicNumber', $topicNumber);  
     }
 
-    # Create a reply.
-    public function postReply($topicNumber) {
+    # Retrieve the view, including the form, to create a reply .
+    public function createReply($topicNumber) {
         return View::make('/createReply')
       	->with('topicNumber', $topicNumber);  
     }
 
+    # This is an action...
+    public function postReply() {
+            $data = Input::all();
+            $reply = new Reply;
+            $reply['content'] = $data['replyContent'];
+            $reply['topic_id'] = $data['topicNum'];
+            $reply->author()->associate(Auth::user()); # <--- Associate the author with this Reply
+            $reply->save();   
+            return Redirect::to('/replies/'.$data['topicNum']);
+    }
+
+    ########################################
+    #
+    #    These are the methods for Comments
+    #
+    ########################################
     # Create a comment in the replies form.
     public function getCommentForm($replyNumber) {
-       return View::make('/createComment')
+        return View::make('/createComment')
      	->with('replyNumber', $replyNumber);  
     }
 
-    # This is an action...
-    public function postLogin() {
-
-
+    # Post a comment to a reply
+    public function postComment() {
+            $data = Input::all();
+            $comment = new Comment;
+            $comment['content'] = $data['commentContent'];
+            $comment['reply_id'] = $data['replyNum'];
+            $comment->author()->associate(Auth::user()); # <--- Associate the author with this Comment
+            $comment->save();   
+            return Redirect::to('/replies/'.$data['topicNum']);        
     }
 
 }

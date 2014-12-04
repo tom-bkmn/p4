@@ -31,10 +31,17 @@ class TopicsController extends BaseController {
     }
 
 
-    # This is an action...
-    public function postLogin() {
-
-
+    # Retrieve the form to delete a topic
+    public function deleteTopic($topicNumber) {
+        return View::make('/deleteTopic')
+       	   ->with('topicNumber', $topicNumber);
     }
+
+    # Delete a topic
+    public function destroy($topicNumber) {
+     echo "distroy a topic here" . $topicNumber;
+    }
+
+
 
 }

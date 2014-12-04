@@ -9,10 +9,6 @@ class UsersController extends BaseController {
 
     # Retrieve the signup panel
     public function signup() {
-        'before' => 'guest',
-        function() {
-             return View::make('signup');
-        }
     }
 
     # Retrieve the view to create a topic

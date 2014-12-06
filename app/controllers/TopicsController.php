@@ -39,7 +39,7 @@ class TopicsController extends BaseController {
 
     # Delete a topic
     public function destroy($topicNumber) {
-     echo "distroy a topic here" . $topicNumber;
+     echo "distroy a topic here " . $topicNumber;
     }
 
 

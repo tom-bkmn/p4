@@ -23,7 +23,7 @@ class RepliesController extends BaseController {
       	->with('topicNumber', $topicNumber);  
     }
 
-    # This is an action...
+    # Post a reply to a topic
     public function postReply() {
             $data = Input::all();
             $reply = new Reply;
@@ -32,6 +32,16 @@ class RepliesController extends BaseController {
             $reply->author()->associate(Auth::user()); # <--- Associate the author with this Reply
             $reply->save();   
             return Redirect::to('/replies/'.$data['topicNum']);
+    }
+
+    # This is an action...
+    public function editReply($replyNumber) {
+        return View::make('/editReply')
+      	->with('replyNumber', $replyNumber);  
+    }
+
+    public function update($replyNumber) {
+        echo "Update a reply here " . $replyNumber;
     }
 
     ########################################

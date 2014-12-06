@@ -30,7 +30,8 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
             echo $author->user_name . " wrote: <br>";
             echo $reply ->content . "<br>";
             echo "created on: " . $reply->created_at . "<br>";
-            echo "<a href=\"/createComment/$reply->id\">Comment on this reply</a>"; 
+            echo "<a href=\"/createComment/$reply->id\">Comment on this reply</a>" . "<br>";
+            echo "<a class=\"test\" href=\"/editReply/$reply->id\">Edit this reply</a>";
             echo "<br>";
             $comments = DB::table('comments')->where('reply_id', $reply->id)->get();
             foreach ($comments as $comment) {

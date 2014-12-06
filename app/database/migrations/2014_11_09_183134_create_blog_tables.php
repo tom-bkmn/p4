@@ -21,6 +21,7 @@ class CreateBlogTables extends Migration {
 		    $table->string('remember_token',100); 
 		    $table->string('password');
 		    $table->string('user_name');
+		    $table->boolean('is_admin');
 		    $table->timestamps();
 		
 		});

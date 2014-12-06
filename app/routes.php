@@ -85,8 +85,11 @@ Route::delete('/delete{topicNumber}', 'TopicsController@destroy');
 Route::get('/replies/{topicNumber}', 'RepliesController@getReplies');
 Route::get('/createReply/{topicNumber}', 'RepliesController@createReply');
 Route::post('/createReply', 'RepliesController@postReply');
+Route::get('/editReply/{replyNumber}', 'RepliesController@editReply');
+Route::put('/editReply/{replyNumber}', 'RepliesController@update');
 
-// COMMETNTS
+// COMMETNTS 
+// Because comments are part of the replies page, they use the reply controller
 Route::get('/createComment/{replyNumber}', 'RepliesController@getCommentForm');
 Route::post('/createComment', 'RepliesController@postComment');
 
@@ -111,6 +114,7 @@ Route::post('/signup',
             $user->email    = Input::get('email');
             $user->password = Hash::make(Input::get('password'));
             $user->user_name = Input::get('user_name');
+            $user->is_admin = false;
 
             # Try to add the user 
             try {

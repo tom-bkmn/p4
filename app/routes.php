@@ -79,7 +79,7 @@ Route::get('/topics', 'TopicsController@getTopics');
 Route::get('/createTopic', 'TopicsController@createTopic');
 Route::post('/createTopic', 'TopicsController@postTopic');
 Route::get('/delete/{topicNumber}', 'TopicsController@deleteTopic');
-Route::delete('/delete{topicNumber}', 'TopicsController@destroy');
+Route::delete('/delete/{topicNumber}', 'TopicsController@destroy');
 
 // REPLIES
 Route::get('/replies/{topicNumber}', 'RepliesController@getReplies');

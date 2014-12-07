@@ -8,9 +8,10 @@ class RepliesController extends BaseController {
 
     ########################################
     #
-    #    These are the methods for Replies
+    #   These are the methods for Replies
     #
     ########################################
+    
     # Retrieve and present a list of Replies
     public function getReplies($topicNumber) {
         return View::make('/replies')
@@ -40,15 +41,19 @@ class RepliesController extends BaseController {
       	->with('replyNumber', $replyNumber);  
     }
 
+    # Admin function - updating a reply
     public function update($replyNumber) {
-        echo "Update a reply here " . $replyNumber;
+    	$data = Input::all(); 	    
+        $reply = DB::table('replies')->where('id', $replyNumber)->update(array('content' => $data['editedReply']));
+        return Redirect::to('/replies/'.$data['topicNumber']);  
     }
 
     ########################################
     #
-    #    These are the methods for Comments
+    #  These are the methods for Comments
     #
     ########################################
+    
     # Create a comment in the replies form.
     public function getCommentForm($replyNumber) {
         return View::make('/createComment')

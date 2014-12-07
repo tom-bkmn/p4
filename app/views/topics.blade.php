@@ -9,7 +9,11 @@ Welcome to TBen's Forums, a place for discussion.  See a topic you like? Select 
 @stop
 
 @section('bodyContent')
-Here are a list of current topics for discussion...
+    @if(Session::get('flash_message'))
+        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+    @endif
+    <br>
+    Here are a list of current topics for discussion...
 <br>
 <br>
 <?php 

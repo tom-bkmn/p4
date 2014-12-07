@@ -1,4 +1,4 @@
-/*CSS rules for p3*/
+/*CSS rules for p4*/
 /*This CSS validates on W3C as CSS level 3 */
 
 body {
@@ -30,5 +30,13 @@ body {
 	border-style: solid;
      	border-width: 1px;
 	border-color: green;
+}
+
+.list {
+
+	border-style: solid;
+     	border-width: 2px;
+	border-color: green;
+	margin-bottom: 5px;
 }
 

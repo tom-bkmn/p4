@@ -1,12 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-*/
-
-
 /* Environment Support and Debug */
 Route::get('/get-environment',function() {
 
@@ -96,90 +89,10 @@ Route::post('/createComment', 'RepliesController@postComment');
 //***********************************************************
 //        LOGIN AND AUTHENTICATION ROUTES HERE
 //***********************************************************
-Route::get('/signup',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('signup');
-        }
-    )
-);
-
-Route::post('/signup', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $user = new User;
-            $user->email    = Input::get('email');
-            $user->password = Hash::make(Input::get('password'));
-            $user->user_name = Input::get('user_name');
-            $user->is_admin = false;
-
-            # Try to add the user 
-            try {
-                $user->save();
-            }
-            # Fail
-            catch (Exception $e) {
-                return Redirect::to('/signup')->with('flash_message', 'Sign up failed; please try again.')->withInput();
-            }
-
-            # Log the user in
-            Auth::login($user);
-
-            return Redirect::to('/list')->with('flash_message', 'Welcome to Foobooks!');
-
-        }
-    )
-);
-
-Route::get('/login',
-    array(
-        'before' => 'guest',
-        function() {
-            return View::make('login');
-        }
-    )
-);
-
-Route::post('/login', 
-    array(
-        'before' => 'csrf', 
-        function() {
-
-            $credentials = Input::only('email', 'password');
-
-            if (Auth::attempt($credentials, $remember = true)) {
-                return Redirect::intended('/topics')->with('flash_message', 'Welcome Back!');
-            }
-            else {
-                return Redirect::to('/login')->with('flash_message', 'Log in failed; please try again.');
-            }
-
-            return Redirect::to('/topics');
-        }
-    )
-);
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
 
 
-Route::get('/logout', function() {
-
-    # Log out
-    Auth::logout();
-    
-    echo "you are loggd out";
-
-    # Send them to the homepage
-    return Redirect::to('/login');
-
-});
-
-Route::get('/list/{format?}', 
-    array(
-        'before' => 'auth', 
-        function($format = 'html') {
-            return Redirect::to('/topics');
-        }
-    )
-);

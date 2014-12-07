@@ -5,14 +5,17 @@
 @stop
 
 @section('landingPageIntro')
-Welcome to TBen's Forums, a place for discussion.  <br>
-See a topic you like? Select the link for that topic and add your .02.  Don't see a topic that catches your interest? Select the Create a Topic link and begin.
-@stop
-
-@section('bodyContent')
     @if(Session::get('flash_message'))
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
     @endif
+    <br>
+    See a topic you like? Select the link for that topic and add your .02.  Don't see a topic that catches your interest? Select the Create a Topic link and begin. <br>
+    <br>
+    Just be nice, ok?  The idea is to blog, not bludgeon.
+@stop
+
+@section('bodyContent')
+
     <br>
     Here are a list of current topics for discussion...
     <br>

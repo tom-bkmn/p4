@@ -20,16 +20,25 @@ body {
 	background-color: #D0D0D0;
 }
 
+/*Style for the login and signup page - background*/
+.centerlogin{
+	width: auto;
+	height:  auto;
+	border-style: solid;
+     	border-width: 1px;
+	border-color: black;
+	padding: 20px;
+	margin-right:  20%;
+	margin-left: 20%;
+ 	background: -webkit-linear-gradient(#4D944D, #CCE0CC); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(#4D944D, #CCE0CC); /* For Opera 11.1 to 12.0 */
+ 	background: -moz-linear-gradient(#4D944D, #CCE0CC); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(#4D944D, #CCE0CC); /* Standard syntax */
+}
+
 .form {
 	font-size: 120%;
 	font-weight: bold;
-}
-
-.test {
-
-	border-style: solid;
-     	border-width: 1px;
-	border-color: green;
 }
 
 .list {
@@ -40,5 +49,19 @@ body {
 	margin-bottom: 5px;
 	padding: 10px;
 	border-radius: 25px;
+}
+
+/* Style for the login and signup page - the data form*/
+.login {
+	border-style: solid;
+     	border-width: 2px;
+	border-color: green;
+	margin-bottom: 5px;
+	padding: 15px;
+	border-radius: 25px;
+ 	background: -webkit-linear-gradient(#197519, #99C299); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(#197519, #99C299); /* For Opera 11.1 to 12.0 */
+ 	background: -moz-linear-gradient(#197519, #99C299); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(#197519, #99C299); /* Standard syntax */
 }
 

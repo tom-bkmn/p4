@@ -1,7 +1,9 @@
 @extends('_master')
 
 @section('header')
-     <a href="/loremTool">login</a> 
-     <a href="/loremTool">logout</a> 
+     <div>
+         <a href="/loremTool">login</a> 
+         <a href="/loremTool">logout</a> 
+    </div>
 @stop
 

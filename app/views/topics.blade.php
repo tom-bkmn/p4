@@ -23,11 +23,9 @@ See a topic you like? Select the link for that topic and add your .02.  Don't se
             <br>
             Description:  {{$topic->topic_content}} <br>
             <?php $user = DB::table('users')->where('id', $topic->author_id)->first(); ?>
-            Author name:  {{$user->user_name}} <br>
+            Author:  {{$user->user_name}} <br>
             Created on:  {{$topic->created_at }} <br>
             <a href="/delete/{{$topic->id}}">Delete this topic</a>
-            <br>
-            <br>
         </div>
     @endforeach
 

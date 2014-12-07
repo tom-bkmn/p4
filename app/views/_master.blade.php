@@ -9,8 +9,8 @@
 <body>
     <div class="center">
         <?php include(app_path().'/views/includes/header.php'); ?>
-        <h2>@yield('landingPageIntro')</h2>
-        <h3>@yield('bodyContent')</h3>
+        <h3>@yield('landingPageIntro')</h3>
+        <h4>@yield('bodyContent')</h4>
     </div>
 
 </body>

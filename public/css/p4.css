@@ -57,8 +57,8 @@ body {
 
 /* Style for the login and signup page - the data form*/
 .login {
-	border-style: solid;
-     	border-width: 2px;
+	border-style:none solid solid none;
+     	border-width: 4px;
 	border-color: green;
 	margin-bottom: 5px;
 	padding: 15px;

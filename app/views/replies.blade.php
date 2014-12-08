@@ -24,6 +24,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
         Author:  {{$user->user_name}} <br>
         Date:  {{$topic->created_at}} <br><br>
         <a href="/createReply/{{$topicNumber}}">Reply to this topic</a>
+        <a href="/topics">Return to topic list</a>
         <br><br>
         @if (sizeof($replies) < 1)
               There are no replies to this topic.

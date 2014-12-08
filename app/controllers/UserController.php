@@ -21,7 +21,7 @@ class UserController extends BaseController {
         #  Define the rules
         $rules = array(
             'email' => 'required|email|unique:users,email',
-        #    'password' => 'required|min:4',
+            'password' => 'required|min:4',
             'user_name' => 'required');
 
         # Step 2)

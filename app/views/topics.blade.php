@@ -20,6 +20,8 @@
     Here are a list of current topics for discussion...
     <br>
     <br>
+    <?php $adminCheck = Auth::user()->is_admin; ?>
+
     @foreach ($topics as $topic) 
         <div class="list">
             <a href="/replies/{{$topic->id}}">Topic: {{$topic->topic_name}}</a>
@@ -28,7 +30,10 @@
             <?php $user = DB::table('users')->where('id', $topic->author_id)->first(); ?>
             Author:  {{$user->user_name}} <br>
             Created on:  {{$topic->created_at }} <br>
-            <a href="/delete/{{$topic->id}}">Delete this topic</a>
+            <!-- Only offer the option to delete if the current user is an admin -->
+            @if($adminCheck)
+                <a href="/delete/{{$topic->id}}">Delete this topic</a>
+            @endif
         </div>
     @endforeach
 

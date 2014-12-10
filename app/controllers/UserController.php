@@ -39,7 +39,7 @@ class UserController extends BaseController {
         $user->email    = Input::get('email');
         $user->password = Hash::make(Input::get('password'));
         $user->user_name = Input::get('user_name');
-       # $user->is_admin = false;
+        $user->is_admin = false;
 
         # Try to add the user 
         $user->save();

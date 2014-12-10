@@ -33,6 +33,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
         @endif
         <br><br>
 
+         <?php $adminCheck = Auth::user()->is_admin; ?>
         @foreach ($replies as $reply) 
             <div  class="list">
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
@@ -40,7 +41,10 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
                 {{$reply ->content}} <br>
                 created on:  {{$reply->created_at}} <br>
                 <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br>
-                <a class="test" href="/editReply/{{$reply->id}}">Edit this reply</a> <br>
+                <!-- Only offer the option to delete if the current user is an admin -->
+                @if($adminCheck)
+                    <a class="test" href="/editReply/{{$reply->id}}">Edit this reply</a> <br>
+                @endif
                 <?php $comments = DB::table('comments')->where('reply_id', $reply->id)->get() ?>
                 @foreach ($comments as $comment) 
                     >>>>>>>> Comment:  {{$comment ->content}} <br>

@@ -1,8 +1,9 @@
   <div class="header" >
-      <h5>
+      <h4>  TBen's Forums, a place for discussion.  <h4>
+      <h4>
+          <?php $userName = Auth::user()->user_name; ?>
+          Logged in as: <?php echo $userName ?> <br>
           <a href="/createTopic">Create a Topic</a>
-          <a href="/login">login</a> 
           <a href="/logout">logout</a> 
-      </h5>
-      <h3>  TBen's Forums, a place for discussion.  <h3>
+      </h4>
   </div>

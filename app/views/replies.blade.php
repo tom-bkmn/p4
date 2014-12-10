@@ -40,16 +40,18 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
                 {{$author->user_name}} wrote: <br>
                 {{$reply ->content}} <br>
                 created on:  {{$reply->created_at}} <br>
-                <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br>
+                <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br><br>
                 <!-- Only offer the option to delete if the current user is an admin -->
                 @if($adminCheck)
                     <a class="test" href="/editReply/{{$reply->id}}">Edit this reply</a> <br>
                 @endif
                 <?php $comments = DB::table('comments')->where('reply_id', $reply->id)->get() ?>
                 @foreach ($comments as $comment) 
-                    >>>>>>>> Comment:  {{$comment ->content}} <br>
-                    <?php $commentAuthor = DB::table('users')->where('id', $comment->author_id)->first() ?>
-                    >>>>>>>> Author:  {{$commentAuthor->user_name}} <br>
+                      <div class="indent">
+                          Comment:  {{$comment ->content}} <br><br>
+                          <?php $commentAuthor = DB::table('users')->where('id', $comment->author_id)->first() ?>
+                          Author:  {{$commentAuthor->user_name}} <br>
+                     </div>
                 @endforeach
             </div> 
         @endforeach

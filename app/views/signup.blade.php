@@ -19,5 +19,8 @@
             {{ Form::text('user_name') }}<br><br>    
             {{ Form::submit('Submit') }}
         {{ Form::close() }}
+        <br>
+        Or login here: 
+        <a href="/login">login</a>
     </div>
 @stop

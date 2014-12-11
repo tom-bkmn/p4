@@ -17,5 +17,8 @@
             {{ Form::password('password') }}<br><br>
             {{ Form::submit('Submit') }}
         {{ Form::close() }}
+        <br>
+        Or sign up for an account here: 
+        <a href="/signup">signup</a>
     </div>
 @stop

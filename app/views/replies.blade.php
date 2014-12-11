@@ -34,7 +34,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
         <br><br>
 
          <?php $adminCheck = Auth::user()->is_admin; ?>
-        @foreach ($replies as $reply) 
+        @foreach (array_reverse($replies) as $reply) 
             <div  class="list">
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
                 {{$author->user_name}} wrote: <br>
@@ -46,7 +46,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
                     <a class="test" href="/editReply/{{$reply->id}}">Edit this reply</a> <br>
                 @endif
                 <?php $comments = DB::table('comments')->where('reply_id', $reply->id)->get() ?>
-                @foreach ($comments as $comment) 
+                @foreach (array_reverse($comments) as $comment) 
                       <div class="indent">
                           Comment:  {{$comment ->content}} <br><br>
                           <?php $commentAuthor = DB::table('users')->where('id', $comment->author_id)->first() ?>

@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="center">
-        <?php include(app_path().'/views/includes/header.php'); ?>
+         <div class="list">
+        <div class="logo"><img src="{{asset('images/logo.png') }}" alt="logo image" height="120" width="375"></div>
+        <div class="header"><?php include(app_path().'/views/includes/header.php'); ?></div>
+         </div>
         <h3>@yield('landingPageIntro')</h3>
         <h4>@yield('bodyContent')</h4>
     </div>

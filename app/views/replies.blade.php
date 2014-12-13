@@ -23,7 +23,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
         Description:  {{$topic->topic_content}}  <br>
         Author:  {{$user->user_name}} <br>
         Date:  {{$topic->created_at}} <br><br>
-        <a href="/createReply/{{$topicNumber}}">Reply to this topic</a>
+        <a href="/replyForm/{{$topicNumber}}">Reply to this topic</a>
         <a href="/topics">Return to topic list</a>
         <br><br>
         @if (sizeof($replies) < 1)
@@ -43,7 +43,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
                 <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br><br>
                 <!-- Only offer the option to delete if the current user is an admin -->
                 @if($adminCheck)
-                    <a class="test" href="/editReply/{{$reply->id}}">Edit this reply</a> <br>
+                    <a class="test" href="/editForm/{{$reply->id}}">Edit this reply</a> <br>
                 @endif
                 <?php $comments = DB::table('comments')->where('reply_id', $reply->id)->get() ?>
                 @foreach (array_reverse($comments) as $comment) 

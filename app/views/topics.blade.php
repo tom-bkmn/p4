@@ -30,7 +30,7 @@
             Created on: {{$stamp }} <br>
             <!-- Only offer the option to delete if the current user is an admin -->
             @if($adminCheck)
-                <a href="/delete/{{$topic->id}}">Delete this topic</a>
+                <a href="/deleteForm/{{$topic->id}}">Delete this topic</a>
             @endif
         </div>
     @endforeach

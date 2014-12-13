@@ -3,7 +3,14 @@
 class UserController extends BaseController {
 
     public function __construct() {
-        # Put anything here that should happen before any of the other actions
+    	//Call parent constructor for csrf filter    
+        parent::__construct();
+        
+        // Prevent logged-in users from accessing the login/signup forms.
+        $this->beforeFilter('guest', 
+            array(
+                'only' => array('getLogin','getSignup')
+            ));
     }
 
     # Retrieve signup form

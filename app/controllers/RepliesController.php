@@ -3,7 +3,11 @@
 class RepliesController extends BaseController {
 
     public function __construct() {
-        # Put anything here that should happen before any of the other actions
+        // Call parent constructor for csrf filter    
+        parent::__construct();
+        
+        // Do not allow the user to access Topic routes if they aren't logged in
+        $this->beforeFilter('auth', array());
     }
 
     ########################################
@@ -18,8 +22,8 @@ class RepliesController extends BaseController {
         	   ->with('topicNumber', $topicNumber);  
     }
 
-    # Retrieve the view, including the form, to create a reply .
-    public function createReply($topicNumber) {
+    # Retrieve the view with the form to create a reply .
+    public function getReplyForm($topicNumber) {
         return View::make('/createReply')
       	->with('topicNumber', $topicNumber);  
     }
@@ -35,8 +39,8 @@ class RepliesController extends BaseController {
             return Redirect::to('/replies/'.$data['topicNum']);
     }
 
-    # This is an action...
-    public function editReply($replyNumber) {
+    # Admin function - retrieve the form for editing a reply.
+    public function editForm($replyNumber) {
         return View::make('/editReply')
       	->with('replyNumber', $replyNumber);  
     }

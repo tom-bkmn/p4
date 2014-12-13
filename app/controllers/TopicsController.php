@@ -4,7 +4,11 @@ class TopicsController extends BaseController {
 
 
     public function __construct() {
-        # Put anything here that should happen before any of the other actions
+        // Call parent constructor for csrf filter    
+        parent::__construct();
+        
+        // Do not allow the user to access Topic routes if they aren't logged in
+        $this->beforeFilter('auth', array());
     }
 
     # Retrieve and present a list of topics
@@ -15,13 +19,28 @@ class TopicsController extends BaseController {
     }
 
     # Retrieve the view to create a topic
-    public function createTopic() {
+    public function getTopicForm() {
         return View::make('/createTopic');
     }
 
     # Create a topic                      var_dump($data);
     public function postTopic() {
            $data = Input::all();
+echo var_dump($data);
+echo "file name: " . $data['image'];
+######################################
+# Input::hasFile($data['image']);
+#Access file properties
+#echo "HEY" . Input::file($data['image'])->getRealPath();
+#Input::file('name')->getClientOriginalName();
+#Input::file('name')->getClientOriginalExtension();
+#Input::file('name')->getSize();
+#Input::file('name')->getMimeType();
+
+
+
+#######################################
+           
             $topic = new Topic;
             $topic['topic_name'] = $data['topicTitle'];
             $topic['topic_content'] = $data['topicDescription'];
@@ -32,7 +51,7 @@ class TopicsController extends BaseController {
 
 
     # Retrieve the form to delete a topic
-    public function deleteTopic($topicNumber) {
+    public function getDeleteForm($topicNumber) {
         return View::make('/deleteTopic')
        	   ->with('topicNumber', $topicNumber);
     }

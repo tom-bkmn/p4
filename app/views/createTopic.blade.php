@@ -19,6 +19,7 @@
     <br>
     {{Form::textarea('topicDescription')}}
     <br>
+{{Form::file('image') }}
     {{ Form::submit('Submit') }}
 {{ Form::close() }}
 @stop

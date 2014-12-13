@@ -12,7 +12,7 @@ class CreateBlogTables extends Migration {
 	 */
 	public function up()
 	{
-		// Users table tracks user name, email, password and admin status.  
+		// Users table tracks user name, email and password.  
 		// Essential for login and access of the app.
 		Schema::create('users', function($table) 
 		{
@@ -30,8 +30,8 @@ class CreateBlogTables extends Migration {
 		Schema::create('topics', function($table)
 		{
 		    $table->increments('id');
-		    $table->string('topic_name', 100);
-		    $table->string('topic_content', 600);
+		    $table->string('topic_name', 64);
+		    $table->string('topic_content', 128);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
@@ -41,7 +41,7 @@ class CreateBlogTables extends Migration {
 	        Schema::create('replies', function($table)
 		{
 		    $table->increments('id');
-		    $table->string('content', 600);
+		    $table->string('content', 128);
 		    $table->string('topic_id',10);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
@@ -52,13 +52,30 @@ class CreateBlogTables extends Migration {
 	        Schema::create('comments', function($table)
 		{
 		    $table->increments('id');
-		    $table->string('content', 200);
+		    $table->string('content', 128);
 		    $table->string('reply_id', 10);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
 		    $table->timestamps();
 		});
-		       
+		
+		// Pivot tables suck.  Don't use them. Associate topic and replies
+		//Schema::create('reply_topic', function($table)
+		//{
+		//    $table->integer('topic_id')->unsigned();
+		//    $table->foreign('topic_id')->references('id')->on('topics');
+		//    $table->integer('reply_id')->unsigned();
+		//    $table->foreign('reply_id')->references('id')->on('replies');
+		//});
+
+		// Pivot table.  This one sucks too.  Don't use it. Associate replies and comments		
+		//Schema::create('comment_reply', function($table)
+		//{
+		//    $table->integer('reply_id')->unsigned();
+		//    $table->foreign('reply_id')->references('id')->on('replies');
+		//    $table->integer('comment_id')->unsigned();
+		//    $table->foreign('comment_id')->references('id')->on('comments');
+		//});        
 	}
 
 	/**
@@ -68,6 +85,8 @@ class CreateBlogTables extends Migration {
 	 */
 	public function down()
 	{
+		//Schema::drop('reply_topic');
+		//Schema::drop('comment_reply');
 		Schema::drop('topics');
 		Schema::drop('replies');
 		Schema::drop('comments');

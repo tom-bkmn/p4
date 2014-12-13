@@ -68,17 +68,18 @@ Route::get('/debug', function() {
 //                APPLICATION ROUTES
 //***********************************************************
 // TOPICS
+Route::get('/', 'TopicsController@getTopics');
 Route::get('/topics', 'TopicsController@getTopics');
-Route::get('/createTopic', 'TopicsController@createTopic');
+Route::get('/topicForm', 'TopicsController@getTopicForm');
 Route::post('/createTopic', 'TopicsController@postTopic');
-Route::get('/delete/{topicNumber}', 'TopicsController@deleteTopic');
+Route::get('/deleteForm/{topicNumber}', 'TopicsController@getDeleteForm');
 Route::delete('/delete/{topicNumber}', 'TopicsController@destroy');
 
 // REPLIES
 Route::get('/replies/{topicNumber}', 'RepliesController@getReplies');
-Route::get('/createReply/{topicNumber}', 'RepliesController@createReply');
+Route::get('/replyForm/{topicNumber}', 'RepliesController@getReplyForm');
 Route::post('/createReply', 'RepliesController@postReply');
-Route::get('/editReply/{replyNumber}', 'RepliesController@editReply');
+Route::get('/editForm/{replyNumber}', 'RepliesController@editForm');
 Route::put('/editReply/{replyNumber}', 'RepliesController@update');
 
 // COMMETNTS 

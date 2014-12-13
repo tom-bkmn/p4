@@ -21,7 +21,6 @@ body {
   	background: -o-linear-gradient(#4D944D, #D0D0D0); /* For Opera 11.1 to 12.0 */
  	background: -moz-linear-gradient(#4D944D, #D0D0D0); /* For Firefox 3.6 to 15 */
   	background: linear-gradient(#4D944D, #D0D0D0); /* Standard syntax */
-	background-color: ;
 }
 
 /*Style for the login and signup page - background*/
@@ -86,6 +85,23 @@ body {
 .logo {
 	float: left;
 	margin-right:70px;
+	box-shadow: 5px 5px 3px #246B24;
+	border-radius: 25px;
+	background-color: #479147
+}
+
+.imageFormat {
+	border-radius: 25px;
+}
+
+.listHeader {
+
+	border-style: solid;
+     	border-width: 2px;
+	border-color: green;
+	margin-bottom: 5px;
+	padding: 21px;
+	border-radius: 25px;
 }
 
 .navigation{

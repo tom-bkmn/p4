@@ -25,8 +25,8 @@ Watch the demo here: http://screencast.com/t/
 
 • Account details:  Ready made test accounts are available:
 
-1. Regular user: user1@metrocast.net  password: user1
-2. Admin user: admin@metrocast.net  password: admin1
+1. Regular user: 
+2. Admin user: 
  
 • Third party resources acknowledgment: I included Pre into the project.
 

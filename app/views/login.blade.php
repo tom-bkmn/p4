@@ -12,9 +12,9 @@
         @endif 
         {{ Form::open(array('url' => '/login')) }}
         <div>
-            {{ Form::label('email')}}
+            {{ Form::label('email')}}<br>
             {{ Form::text('email') }}<br><br>
-            {{ Form::label('password') }}
+            {{ Form::label('password') }}<br>
             {{ Form::password('password') }}<br><br>
             {{ Form::submit('Submit') }}
         </div>

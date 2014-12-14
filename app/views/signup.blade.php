@@ -15,11 +15,11 @@
         <h1>Sign up for TBen's Blogs</h1>
         {{ Form::open(array('url' => '/signup')) }}
             <div>
-            {{ Form::label('email')}}
+            {{ Form::label('email')}}<br>
             {{ Form::text('email') }}<br><br>
-            {{ Form::label('password')}}
+            {{ Form::label('password')}}<br>
             {{ Form::password('password') }}<br><br>
-            {{ Form::label('user_name') }}
+            {{ Form::label('user_name') }}<br>
             {{ Form::text('user_name') }}<br><br>    
             {{ Form::submit('Submit') }}
             </div>

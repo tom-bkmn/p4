@@ -1,25 +1,34 @@
-## Laravel PHP Framework
+p4
+==
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+###Tom Beikman's P4 assigment for Dynamic Web Applications, CSCI E-15
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+• Live URL of the project:
+ [p4.tombeikman.me](http://p4.tombeikman.me)
+ 
+• Project description: This project is an implementation of a basic blog application.  The project is called TBen's Blog.  The blog supports the following features:
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+1. User authentication.  All users must have an account.
+2. Topic, reply and comment support.  One Topic supports multiple replies, each reply supports multiple comments.
+3. Administrator role.  The admin user has special options for deleting topics and editing replies (satisfies the DELETE and PUT database CRUD requirement).
+4. Input validation and error messaging on all fields on all panels (signup, login, topics, replies and comments).
+5. HTTP 404, 403, and 500 error pages with optional actions (return to app or logout).
+ 
+• Demo information:  I recorded the demo using Jing and uploaded to screencast.com.
+Watch the demo here: http://screencast.com/t/
+ 
+• Additional details:  Authentication details:
+1. Login is supported through email and password.
+2. Prior to login, no access is available to application routes.
+3. After login, no access is available to login and signup routes.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+• Account details:  Ready made test accounts are available
+1. Regular user: user1@metrocast.net  password: user1
+2 Admin user: admin@metrocast.net  password: admin1
+ 
+• Third party resources acknowledgment: I included Pre into the project.
 
-## Official Documentation
+1. Pre: https://packagist.org/packages/paste/pre
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
 
-### Contributing To Laravel
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

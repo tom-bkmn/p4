@@ -52,7 +52,7 @@ App::error(function(Exception $exception, $code)
     # views/errors/403.blade.php
     # views/errors/404.blade.php
     # views/errors/500.blade.php
-    if(Config::get('app.debug') == true) {
+    if(Config::get('app.debug') == false) {
         # 403 Forbidden
         # The request was a valid request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference.
         if($code == 403) {

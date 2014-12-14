@@ -5,7 +5,7 @@
 @stop
 
 @section('intro')
-    This is where you can supply a reply to the topic.     
+    This is where you can supply a reply to a topic.     
 @stop
 
 @section('entries')
@@ -26,12 +26,19 @@
 @stop
 
 @section('form')
+    @if(Session::get('flash_message'))
+        <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+        <br>
+    @endif 
+
+    <div>
     {{Form::open(array('url' => "createReply", 'method'=>'POST'))}}
     {{Form::textarea('replyContent')}}
     <br>
     {{Form::hidden('topicNum', $topicNumber)}}
     {{Form::submit('Submit')}}
     {{Form::close()}}
+    </div>
 @stop
 
 

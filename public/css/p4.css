@@ -2,9 +2,10 @@
 /*This CSS validates on W3C as CSS level 3 */
 
 body {
+/* #33ADFF */
 	font-family: Veranda, Arial, sans-serif;
 	font-size: small;
-	background-color: #F0F0F0;
+	background-color: #F0F0F0; 
 }
 
 
@@ -21,6 +22,7 @@ body {
   	background: -o-linear-gradient(#4D944D, #D0D0D0); /* For Opera 11.1 to 12.0 */
  	background: -moz-linear-gradient(#4D944D, #D0D0D0); /* For Firefox 3.6 to 15 */
   	background: linear-gradient(#4D944D, #D0D0D0); /* Standard syntax */
+	box-shadow: 10px 10px 5px #246B24;
 }
 
 /*Style for the login and signup page - background*/

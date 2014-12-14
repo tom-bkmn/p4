@@ -30,13 +30,26 @@ class RepliesController extends BaseController {
 
     # Post a reply to a topic
     public function postReply() {
-            $data = Input::all();
-            $reply = new Reply;
-            $reply['content'] = $data['replyContent'];
-            $reply['topic_id'] = $data['topicNum'];
-            $reply->author()->associate(Auth::user()); # <--- Associate the author with this Reply
-            $reply->save();   
-            return Redirect::to('/replies/'.$data['topicNum']);
+        $data = Input::all();
+        
+        # Step 1 Define the rules
+        $rules = array('replyContent' => 'required');
+
+        # Step 2 Apply the rules
+        $validator = Validator::make(Input::all(), $rules);
+
+        # Step 3 Communicate some errors.
+        if($validator->fails()) {
+            return Redirect::to('/replyForm/'.$data['topicNum'])
+                ->with('flash_message', 'Error: No input provided.  Please enter your reply');
+        }         
+            
+        $reply = new Reply;
+        $reply['content'] = $data['replyContent'];
+        $reply['topic_id'] = $data['topicNum'];
+        $reply->author()->associate(Auth::user()); # <--- Associate the author with this Reply
+        $reply->save();   
+        return Redirect::to('/replies/'.$data['topicNum']);
     }
 
     # Admin function - retrieve the form for editing a reply.
@@ -66,13 +79,25 @@ class RepliesController extends BaseController {
 
     # Post a comment to a reply
     public function postComment() {
-            $data = Input::all();
-            $comment = new Comment;
-            $comment['content'] = $data['commentContent'];
-            $comment['reply_id'] = $data['replyNum'];
-            $comment->author()->associate(Auth::user()); # <--- Associate the author with this Comment
-            $comment->save();   
-            return Redirect::to('/replies/'.$data['topicNum']);        
+        $data = Input::all();
+            
+        # Step 1 Define the rules
+        $rules = array('commentContent' => 'required');
+
+        # Step 2 Apply the rules
+        $validator = Validator::make(Input::all(), $rules);
+
+        # Step 3 Communicate some errors.
+        if($validator->fails()) {
+            return Redirect::to('/createComment/'.$data['replyNum'])
+                ->with('flash_message', 'Error: No input provided.  Please enter your comment.');
+        }            
+        $comment = new Comment;
+        $comment['content'] = $data['commentContent'];
+        $comment['reply_id'] = $data['replyNum'];
+        $comment->author()->associate(Auth::user()); # <--- Associate the author with this Comment
+        $comment->save();   
+        return Redirect::to('/replies/'.$data['topicNum']);        
     }
 
 }

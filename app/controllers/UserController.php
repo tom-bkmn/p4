@@ -25,16 +25,16 @@ class UserController extends BaseController {
 
     # Post signup.  This uses validation.
     public function postSignup(){
-        #  Define the rules
+        # Step 1 Define the rules
         $rules = array(
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4',
             'user_name' => 'required');
 
-        # Step 2)
+        # Step 2 Apply the rules
             $validator = Validator::make(Input::all(), $rules);
 
-        # Step 3
+        # Step 3 Deal with the consequences
         if($validator->fails()) {
             return Redirect::to('/signup')
                 ->with('flash_message', 'Sign up failed; please fix the errors listed below.')

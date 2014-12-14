@@ -8,6 +8,9 @@
     <div class="login">
         @if(Session::get('flash_message'))
             <div class='flash-message'>{{ Session::get('flash_message') }}</div>
+            @foreach($errors->all() as $message)
+                <div class='error'>{{ $message }}</div>
+            @endforeach
         @endif 
         <h1>Sign up for TBen's Blogs</h1>
         {{ Form::open(array('url' => '/signup')) }}

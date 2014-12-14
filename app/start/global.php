@@ -49,15 +49,14 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
     # In order for these to works, you need to create the following views:
-    # views/403.blade.php
-    # views/404.blade.php
-    # views/500.blade.php
+    # views/errors/403.blade.php
+    # views/errors/404.blade.php
+    # views/errors/500.blade.php
     if(Config::get('app.debug') == true) {
         # 403 Forbidden
         # The request was a valid request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference.
         if($code == 403) {
            return Response::view('errors.403', array(), 403);
-            #return View::make('errors.403', array(), 403);
         }
         # 404 Not Found
         # The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.

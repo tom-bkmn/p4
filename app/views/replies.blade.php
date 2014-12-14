@@ -38,7 +38,7 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
             <div  class="list">
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
                 {{$author->user_name}} wrote: <br>
-                {{$reply ->content}} <br>
+                {{$reply ->content}} <br><br>
                 created on:  {{$reply->created_at}} <br>
                 <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br><br>
                 <!-- Only offer the option to delete if the current user is an admin -->

@@ -25,10 +25,10 @@ class TopicsController extends BaseController {
 
     # Create a topic                      var_dump($data);
     public function postTopic() {
-           $data = Input::all();
+        $data = Input::all();
+######################################
 echo var_dump($data);
 echo "file name: " . $data['image'];
-######################################
 # Input::hasFile($data['image']);
 #Access file properties
 #echo "HEY" . Input::file($data['image'])->getRealPath();
@@ -36,17 +36,30 @@ echo "file name: " . $data['image'];
 #Input::file('name')->getClientOriginalExtension();
 #Input::file('name')->getSize();
 #Input::file('name')->getMimeType();
-
-
-
 #######################################
+
+        # Step 1 Define the rules
+        $rules = array(
+            'topicTitle' => 'required',
+            'topicDescription' => 'required');
+
+        # Step 2 Apply the rules
+            $validator = Validator::make(Input::all(), $rules);
+
+        # Step 3 Deal with the consequences
+        if($validator->fails()) {
+            return Redirect::to('/topicForm')
+                ->with('flash_message', 'Please fix the errors below.')
+                ->withInput()
+                ->withErrors($validator);
+        }
            
-            $topic = new Topic;
-            $topic['topic_name'] = $data['topicTitle'];
-            $topic['topic_content'] = $data['topicDescription'];
-            $topic->author()->associate(Auth::user()); # <--- Associate the author with this Topic
-            $topic->save();   
-            return Redirect::to('/topics');
+        $topic = new Topic;
+        $topic['topic_name'] = $data['topicTitle'];
+        $topic['topic_content'] = $data['topicDescription'];
+        $topic->author()->associate(Auth::user()); # <--- Associate the author with this Topic
+        $topic->save();   
+        return Redirect::to('/topics');
     }
 
 

@@ -18,11 +18,13 @@ p4
 Watch the demo here: http://screencast.com/t/
  
 • Additional details:  Authentication details:
+
 1. Login is supported through email and password.
 2. Prior to login, no access is available to application routes.
 3. After login, no access is available to login and signup routes.
 
-• Account details:  Ready made test accounts are available
+• Account details:  Ready made test accounts are available:
+
 1. Regular user: user1@metrocast.net  password: user1
 2 Admin user: admin@metrocast.net  password: admin1
  

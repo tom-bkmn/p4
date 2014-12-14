@@ -11,11 +11,13 @@
             <div class='flash-message'>{{ Session::get('flash_message') }}</div>
         @endif 
         {{ Form::open(array('url' => '/login')) }}
-            Email:<br>
+        <div>
+            {{ Form::label('email')}}
             {{ Form::text('email') }}<br><br>
-            Password:<br>
+            {{ Form::label('password') }}
             {{ Form::password('password') }}<br><br>
             {{ Form::submit('Submit') }}
+        </div>
         {{ Form::close() }}
         <br>
         Or sign up for an account here: 

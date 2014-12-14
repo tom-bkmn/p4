@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="centerlogin">
-        <h4>@yield('bodyContent')<h4>
+        @yield('bodyContent')
     </div>
 
 </body>

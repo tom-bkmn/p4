@@ -9,7 +9,7 @@ p4
 • Project description: This project is an implementation of a basic blog application.  The project is called TBen's Blog.  The blog supports the following features:
 
 1. User authentication.  All users must have an account.
-2. Topic, reply and comment support.  One Topic supports multiple replies, each reply supports multiple comments.
+2. Topic, reply and comment support.  One Topic supports multiple replies, each reply supports multiple comments. For all posts, the most recent post is first in the list - not last!
 3. Administrator role.  The admin user has special options for deleting topics and editing replies (satisfies the DELETE and PUT database CRUD requirement).
 4. Input validation and error messaging on all fields on all panels (signup, login, topics, replies and comments).
 5. HTTP 404, 403, and 500 error pages with optional actions (return to app or logout).

@@ -3,7 +3,7 @@ p4
 
 ###Tom Beikman's P4 assigment for Dynamic Web Applications, CSCI E-15
 
-• Live URL of the project:
+• Live URL of the final project:
  [p4.tombeikman.me](http://p4.tombeikman.me)
  
 • Project description: This project is an implementation of a basic blog application.  The project is called TBen's Blog.  The blog supports the following features:

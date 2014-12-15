@@ -11,8 +11,6 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
 @section('bodyContent')
     <div>
         <br>
-        Topic number:  {{$topicNumber }};
-        <br>
         <?php
         $topic = DB::table('topics')->where('id', $topicNumber) ->first();
         $user = DB::table('users')->where('id', $topic->author_id)->first();

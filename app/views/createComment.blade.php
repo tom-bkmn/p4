@@ -29,7 +29,6 @@
         <div class='flash-message'>{{ Session::get('flash_message') }}<br></div>
     @endif 
     <div>
-        Reply Number: {{$replyNumber}}
         {{Form::open(array('url' => "createComment", 'method'=>'POST'))}}
             {{Form::textarea('commentContent')}}
             <br>

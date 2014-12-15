@@ -5,7 +5,7 @@
 @stop
 
 @section('intro')
-  Please provide the name of the topic and description.
+  Provide the name of the topic and description.
 @stop
 
 @section('form')
@@ -19,15 +19,10 @@
     @endif 
     <div>
     {{ Form::open(array('url' => 'createTopic', 'method'=>'POST'))}}
-      {{Form::label('topicTitle', ' Enter a topic title.')}}
-      <br>
-      {{Form::text('topicTitle')}}
-      <br>
-      <br>
-      {{Form::label('topicDescription', ' Enter a topic description. ')}}
-      <br>
-      {{Form::textarea('topicDescription')}}
-      <br>
+      {{Form::label('topicTitle', ' Enter a topic title.')}}<br>
+      {{Form::text('topicTitle')}}<br><br>
+      {{Form::label('topicDescription', ' Enter a topic description. ')}}<br>
+      {{Form::textarea('topicDescription')}}<br>
 {{Form::file('image') }}
       {{ Form::submit('Submit') }}
   {{ Form::close() }}

@@ -10,7 +10,7 @@
     <div class="center">
             <div class="listHeader">
                 <div class="logo"><img class="imageFormat" src="{{asset('images/logo2.png') }}" alt="logo image" height="120" width="375"></div>
-                <div class="header"><?php include(app_path().'/views/includes/errorheader.php'); ?></div>
+                <div class="header"><?php include(app_path().'/views/includes/header2.php'); ?></div>
          </div>
         <h4>@yield('bodyContent')</h4>
     </div>

@@ -10,13 +10,10 @@
 
 @section('entries')
     <div>
-        Topic number:  {{$topicNumber}}
-        <br>
         <?php
             $topic = DB::table('topics')->where('id', $topicNumber) ->first();
             $user = DB::table('users')->where('id', $topic->author_id)->first();
         ?>
-        <br>
         Topic:  {{$topic->topic_name}} <br>
         Description:  {{$topic->topic_content}}  <br>
         Author:  {{$user->user_name}} <br>

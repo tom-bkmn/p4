@@ -5,12 +5,11 @@
 @stop
 
 @section('landingPageIntro')
-This is the replies page.  All the discussion takes place here.  Also, comments can be posted against specific replies.
+This is the replies page.  All discussion for the currently selected topic takes place here.  Comments may also be posted for specific replies.
 @stop
 
 @section('bodyContent')
     <div>
-        <br>
         <?php
         $topic = DB::table('topics')->where('id', $topicNumber) ->first();
         $user = DB::table('users')->where('id', $topic->author_id)->first();
@@ -20,7 +19,8 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
         Topic:  {{$topic->topic_name}}  <br>
         Description:  {{$topic->topic_content}}  <br>
         Author:  {{$user->user_name}} <br>
-        Date:  {{$topic->created_at}} <br><br>
+        <?php $stamp = date('M d Y', strtotime($topic->created_at))  ?>
+        Created on: {{$stamp }} <br><br>
         <a href="/replyForm/{{$topicNumber}}">Reply to this topic</a>
         <a href="/topics">Return to topic list</a>
         <br><br>
@@ -37,8 +37,9 @@ This is the replies page.  All the discussion takes place here.  Also, comments 
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
                 {{$author->user_name}} wrote: <br>
                 {{$reply ->content}} <br><br>
-                created on:  {{$reply->created_at}} <br>
-                <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br><br>
+                <?php $stamp2 = date('M d Y', strtotime($reply->created_at))  ?>
+                Created on:  {{$stamp2}} <br>
+                <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br>
                 <!-- Only offer the option to delete if the current user is an admin -->
                 @if($adminCheck)
                     <a class="test" href="/editForm/{{$reply->id}}">Edit this reply</a> <br>

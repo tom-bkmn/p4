@@ -18,8 +18,9 @@
         Topic:  {{$topic->topic_name}} <br>
         Description: {{$topic->topic_content}} <br>
         Author:  {{$user->user_name}} <br>
-        Date:  {{$topic->created_at}} <br><br>
-        You are commenting on this reply: <br><br>
+        <?php $stamp = date('M d Y', strtotime($topic->created_at))  ?>
+        Created on:  {{$stamp}} <br><br>
+        You are commenting on this reply: <br>
         {{$reply->content}}
     </div>
 @stop

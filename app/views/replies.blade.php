@@ -16,7 +16,7 @@ This is the replies page.  All discussion for the currently selected topic takes
         $replies = DB::table('replies')->where('topic_id', $topicNumber)->get();
         ?>
         <br>
-        Topic:  {{$topic->topic_name}}  <br>
+        Topic:  {{$topic->topic_name}}  <br><br>
         Description:  {{$topic->topic_content}}  <br>
         Author:  {{$user->user_name}} <br>
         <?php $stamp = date('M d Y', strtotime($topic->created_at))  ?>

@@ -17,7 +17,7 @@ This is the replies page.  All discussion for the currently selected topic takes
         ?>
         <br>
         Topic:  {{$topic->topic_name}}  <br><br>
-        Description:  {{$topic->topic_content}}  <br>
+        Description:  {{$topic->topic_content}}  <br><br>
         Author:  {{$user->user_name}} <br>
         <?php $stamp = date('M d Y', strtotime($topic->created_at))  ?>
         Created on: {{$stamp }} <br><br>

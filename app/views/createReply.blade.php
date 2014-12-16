@@ -14,8 +14,8 @@
             $topic = DB::table('topics')->where('id', $topicNumber) ->first();
             $user = DB::table('users')->where('id', $topic->author_id)->first();
         ?>
-        Topic:  {{$topic->topic_name}} <br>
-        Description:  {{$topic->topic_content}}  <br>
+        Topic:  {{$topic->topic_name}} <br><br>
+        Description:  {{$topic->topic_content}}  <br><br>
         Author:  {{$user->user_name}} <br>
         Date:  {{$topic->created_at}} 
         <br><br>

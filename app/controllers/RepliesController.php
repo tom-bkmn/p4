@@ -31,6 +31,7 @@ class RepliesController extends BaseController {
     # Post a reply to a topic
     public function postReply() {
         $data = Input::all();
+        $filename = "";
         
         # Step 1 Define the rules
         $rules = array('replyContent' => 'required');
@@ -42,11 +43,20 @@ class RepliesController extends BaseController {
         if($validator->fails()) {
             return Redirect::to('/replyForm/'.$data['topicNum'])
                 ->with('flash_message', 'Error: No input provided.  Please enter your reply');
-        }         
+        }    
+
+        # Manage the image if one was uploaded. Rename the image and stash it in /public/uploads
+        if (Input::hasFile('picture')){
+	    $filex = Input::file('picture');
+	    $filename = str_random(9).".".Input::file('picture')->getClientOriginalExtension();
+	    echo "File Size: " . Input::file('picture')->getSize();
+	    Input::file('picture')->move(base_path() . '/public/uploads', $filename);  
+	}        
             
         $reply = new Reply;
         $reply['content'] = $data['replyContent'];
         $reply['topic_id'] = $data['topicNum'];
+        $reply['image_name'] = $filename;
         $reply->author()->associate(Auth::user()); # <--- Associate the author with this Reply
         $reply->save();   
         return Redirect::to('/replies/'.$data['topicNum']);

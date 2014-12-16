@@ -36,7 +36,12 @@ This is the replies page.  All discussion for the currently selected topic takes
             <div  class="list">
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
                 {{$author->user_name}} wrote: <br>
-                {{$reply ->content}} <br><br>
+                {{$reply ->content}} <br>
+                <?php $imagePath = '/uploads/' . $reply->image_name  ?>
+                @if($reply->image_name != "")
+                    <img src="{{asset($imagePath) }}" alt="user image" height="200" width="235">
+                @endif
+                <br><br>
                 <?php $stamp2 = date('M d Y', strtotime($reply->created_at))  ?>
                 Created on:  {{$stamp2}} <br>
                 <a href="/createComment/{{$reply->id}}">Comment on this reply</a> <br>
@@ -45,7 +50,7 @@ This is the replies page.  All discussion for the currently selected topic takes
                     <a class="test" href="/editForm/{{$reply->id}}">Edit this reply</a> <br>
                 @endif
                 <?php $comments = DB::table('comments')->where('reply_id', $reply->id)->get() ?>
-                @foreach (array_reverse($comments) as $comment) 
+                @foreach ($comments as $comment) 
                       <div class="indent">
                           Comment:  {{$comment ->content}} <br><br>
                           <?php $commentAuthor = DB::table('users')->where('id', $comment->author_id)->first() ?>

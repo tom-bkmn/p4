@@ -45,6 +45,7 @@ class CreateBlogTables extends Migration {
 		    $table->string('topic_id',10);
 		    $table->integer('author_id')->unsigned();
 		    $table->foreign('author_id')->references('id')->on('users');
+		    $table->string('image_name', 20);
 		    $table->timestamps();
 		});	
 		

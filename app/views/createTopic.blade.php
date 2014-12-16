@@ -23,8 +23,7 @@
       {{Form::text('topicTitle')}}<br><br>
       {{Form::label('topicDescription', ' Enter a topic description. ')}}<br>
       {{Form::textarea('topicDescription')}}<br>
-{{Form::file('image') }}
-      {{ Form::submit('Submit') }}
+      {{Form::submit('Submit')}}
   {{ Form::close() }}
    </div>
 @stop

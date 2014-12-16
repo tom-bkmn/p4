@@ -29,10 +29,11 @@
     @endif 
 
     <div>
-    {{Form::open(array('url' => "createReply", 'method'=>'POST'))}}
-    {{Form::textarea('replyContent')}}
-    <br>
+    {{Form::open(array('url' => "createReply", 'method'=>'POST', 'files'=> true))}}
+    {{Form::textarea('replyContent')}}<br>
     {{Form::hidden('topicNum', $topicNumber)}}
+    {{Form::label('Image upload')}}<br>
+    {{Form::file('picture')}}
     {{Form::submit('Submit')}}
     {{Form::close()}}
     </div>

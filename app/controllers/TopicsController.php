@@ -26,17 +26,6 @@ class TopicsController extends BaseController {
     # Create a topic                      var_dump($data);
     public function postTopic() {
         $data = Input::all();
-######################################
-echo var_dump($data);
-echo "file name: " . $data['image'];
-# Input::hasFile($data['image']);
-#Access file properties
-#echo "HEY" . Input::file($data['image'])->getRealPath();
-#Input::file('name')->getClientOriginalName();
-#Input::file('name')->getClientOriginalExtension();
-#Input::file('name')->getSize();
-#Input::file('name')->getMimeType();
-#######################################
 
         # Step 1 Define the rules
         $rules = array(

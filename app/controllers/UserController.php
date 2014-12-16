@@ -37,7 +37,7 @@ class UserController extends BaseController {
         # Step 3 Deal with the consequences
         if($validator->fails()) {
             return Redirect::to('/signup')
-                ->with('flash_message', 'Sign up failed; please fix the errors listed below.')
+                ->with('flash_message', 'Sign up failed, please fix the error(s) listed below.')
                 ->withInput()
                 ->withErrors($validator);
         }

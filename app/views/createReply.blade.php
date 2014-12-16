@@ -27,16 +27,19 @@
         <div class='flash-message'>{{ Session::get('flash_message') }}</div>
         <br>
     @endif 
-
-    <div>
-    {{Form::open(array('url' => "createReply", 'method'=>'POST', 'files'=> true))}}
-    {{Form::textarea('replyContent')}}<br>
-    {{Form::hidden('topicNum', $topicNumber)}}
-    {{Form::label('Image upload')}}<br>
-    {{Form::file('picture')}}
-    {{Form::submit('Submit')}}
-    {{Form::close()}}
-    </div>
+    
+    <h4>
+        <div>
+            {{Form::open(array('url' => "createReply", 'method'=>'POST', 'files'=> true))}}
+            {{Form::label('your reply')}}<br>
+            {{Form::textarea('replyContent')}}<br>
+            {{Form::hidden('topicNum', $topicNumber)}}
+            {{Form::label('Image upload')}}<br>
+            {{Form::file('picture')}}
+            {{Form::submit('Submit')}}
+            {{Form::close()}}
+        </div>
+    </h4>
 @stop
 
 

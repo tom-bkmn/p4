@@ -16,7 +16,7 @@ p4
 6. HTTP 404, 403, and 500 error pages with optional actions (return to app or logout).
  
 • Demo information:  I recorded the demo using Jing and uploaded to screencast.com.
-Watch the demo here: http://screencast.com/t/
+Watch the demo here: http://screencast.com/t/v6OXrjKytxfa
  
 • Additional authentication details:
 
@@ -26,11 +26,13 @@ Watch the demo here: http://screencast.com/t/
 4. After login, no access is available to login and signup routes.
 5. Logout is supported.
 
-• Account details:  Ready-made test accounts are available:
+• Account details:  Ready made test accounts are available:
 
-1. Regular user: 
-2. Admin user: 
+1. Regular user: user1@metrocast.net   password: user1
+2. Admin user: admin@metrocast.net   password: admin1
  
 • Third party resources acknowledgment: I included Pre into the project.
 
 1. Pre: https://packagist.org/packages/paste/pre
+
+** Just remember: There's filesize limit for images of 2.07 meg!

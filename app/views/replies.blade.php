@@ -32,7 +32,7 @@ This is the replies page.  All discussion for the currently selected topic takes
         <br><br>
 
          <?php $adminCheck = Auth::user()->is_admin; ?>
-        @foreach (array_reverse($replies) as $reply) 
+        @foreach ($replies as $reply) 
             <div  class="list">
                 <?php $author = DB::table('users')->where('id', $reply->author_id)->first() ?>
                 {{$author->user_name}} wrote: <br>

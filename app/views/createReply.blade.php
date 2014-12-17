@@ -1,7 +1,7 @@
 @extends('_replymaster')
 
 @section('title')
-    TBen's Blog/Forum Deluxe
+    TBen's Blog
 @stop
 
 @section('intro')
@@ -28,18 +28,16 @@
         <br>
     @endif 
     
-    <h4>
         <div>
             {{Form::open(array('url' => "createReply", 'method'=>'POST', 'files'=> true))}}
-            {{Form::label('your reply')}}<br>
+             Reply:<br>
             {{Form::textarea('replyContent')}}<br>
             {{Form::hidden('topicNum', $topicNumber)}}
-            {{Form::label('Image upload')}}<br>
+            Upload image:<br>
             {{Form::file('picture')}}
             {{Form::submit('Submit')}}
             {{Form::close()}}
         </div>
-    </h4>
 @stop
 
 

@@ -1,7 +1,7 @@
 @extends('_replymaster')
 
 @section('title')
-    TBen's Blog/Forum Deluxe
+    TBen's Blog
 @stop
 
 @section('intro')

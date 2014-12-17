@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-            "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -13,7 +12,7 @@
             <div class="header"><?php include(app_path().'/views/includes/header2.php'); ?></div>
         </div>
         <h3>@yield('intro')</h3>
-        <h4>@yield('entries')</h4>
+        @yield('entries')
         @yield('form')
     </div>
 

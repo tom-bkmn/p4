@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-            "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html  xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -13,7 +12,7 @@
             <div class="header"><?php include(app_path().'/views/includes/header.php'); ?></div>
          </div>
         <h3>@yield('landingPageIntro')</h3>
-        <h4>@yield('bodyContent')<h4>
+        @yield('bodyContent')
     </div>
 
 </body>

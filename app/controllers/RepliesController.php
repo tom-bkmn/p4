@@ -49,7 +49,6 @@ class RepliesController extends BaseController {
         if (Input::hasFile('picture')){
 	    $filex = Input::file('picture');
 	    $filename = str_random(9).".".Input::file('picture')->getClientOriginalExtension();
-	   // echo "File Size: " . Input::file('picture')->getSize();
 	    Input::file('picture')->move(base_path() . '/public/uploads', $filename);  
 	}        
             

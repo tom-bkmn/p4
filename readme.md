@@ -9,7 +9,7 @@ p4
 • Project description: This project is an implementation of a basic blog application.  The project is called TBen's Blog.  The blog supports the following features:
 
 1. User authentication.  All users must have an account.
-2. Topic, reply and comment support.  One Topic supports multiple replies, each reply supports multiple comments. For all topics and replies, the last created item is listed first on the page.  Comments, however, are listed as oldest first, newer entries are last.
+2. Topic, reply and comment support.  One Topic supports multiple replies, each reply supports multiple comments. For all topics, the last created item is listed first on the page.  Replies and comments, however, list oldest entries first - newer entries are last.
 3. Administrator role.  The admin user has special options for deleting topics and editing replies (satisfies the DELETE and PUT database CRUD requirement).
 4. Image upload in replies.  Image files can be uploaded and displayed in replies.  However, there is a 2.07 meg filesize limit! (I'm not entirely sure why-and i can't override it.)
 5. Input validation and error messaging on all fields on all panels (signup, login, topics, replies and comments).
